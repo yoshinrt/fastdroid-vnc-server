@@ -4,7 +4,7 @@
  *
  *  LibVNCServer (C) 2001 Johannes E. Schindelin <Johannes.Schindelin@gmx.de>
  *  Original OSXvnc (C) 2001 Dan McGuirk <mcguirk@incompleteness.net>.
- *  Original Xvnc (C) 1999 AT&T Laboratories Cambridge.  
+ *  Original Xvnc (C) 1999 AT&T Laboratories Cambridge.
  *  All Rights Reserved.
  *
  *  see GPL (latest version) for full details
@@ -60,8 +60,8 @@ char rfbEndianTest = (1==1);
 static rfbProtocolExtension* rfbExtensionHead = NULL;
 
 /*
- * This method registers a list of new extensions.  
- * It avoids same extension getting registered multiple times. 
+ * This method registers a list of new extensions.
+ * It avoids same extension getting registered multiple times.
  * The order is not preserved if multiple extensions are
  * registered at one-go.
  */
@@ -100,9 +100,9 @@ rfbRegisterProtocolExtension(rfbProtocolExtension* extension)
 }
 
 /*
- * This method unregisters a list of extensions.  
+ * This method unregisters a list of extensions.
  * These extensions won't be available for any new
- * client connection. 
+ * client connection.
  */
 void
 rfbUnregisterProtocolExtension(rfbProtocolExtension* extension)
@@ -242,7 +242,7 @@ rfbDefaultLog(const char *format, ...)
 
 	time(&log_clock);
 	strftime(buf, 255, "%d/%m/%Y %X ", localtime(&log_clock));
-	fprintf(stderr,buf);
+	fprintf(stderr, "%s", buf);
 
 	vfprintf(stderr, format, args);
 	fflush(stderr);
@@ -260,7 +260,7 @@ void rfbLogPerror(const char *str)
 }
 
 void rfbScheduleCopyRegion(rfbScreenInfoPtr rfbScreen,sraRegionPtr copyRegion,int dx,int dy)
-{  
+{
 	rfbClientIteratorPtr iterator;
 	rfbClientPtr cl;
 
@@ -569,7 +569,7 @@ listenerRun(void *data)
 	return(NULL);
 }
 
-void 
+void
 rfbStartOnHoldClient(rfbClientPtr cl)
 {
 	pthread_create(&cl->client_thread, NULL, clientInput, (void *)cl);
@@ -577,7 +577,7 @@ rfbStartOnHoldClient(rfbClientPtr cl)
 
 #else
 
-void 
+void
 rfbStartOnHoldClient(rfbClientPtr cl)
 {
 	cl->onHold = FALSE;
@@ -585,7 +585,7 @@ rfbStartOnHoldClient(rfbClientPtr cl)
 
 #endif
 
-void 
+void
 rfbRefuseOnHoldClient(rfbClientPtr cl)
 {
 	rfbCloseClient(cl);
@@ -632,7 +632,7 @@ static void rfbDefaultSetXCutText(char* text, int len, rfbClientPtr cl)
 /* TODO: add a nice VNC or RFB cursor */
 
 #if defined(WIN32) || defined(sparc) || !defined(NO_STRICT_ANSI)
-static rfbCursor myCursor = 
+static rfbCursor myCursor =
 {
 		FALSE, FALSE, FALSE, FALSE,
 		(unsigned char*)"\000\102\044\030\044\102\000",
@@ -644,7 +644,7 @@ static rfbCursor myCursor =
 		FALSE
 };
 #else
-static rfbCursor myCursor = 
+static rfbCursor myCursor =
 {
 		cleanup: FALSE,
 		cleanupSource: FALSE,
