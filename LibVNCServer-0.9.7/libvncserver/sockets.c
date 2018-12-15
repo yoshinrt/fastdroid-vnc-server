@@ -238,8 +238,8 @@ rfbCheckFds(rfbScreenInfoPtr rfbScreen,long usec)
 
 	do {
 		memcpy((char *)&fds, (char *)&(rfbScreen->allFds), sizeof(fd_set));
-		tv.tv_sec = 0;
-		tv.tv_usec = usec;
+		tv.tv_sec = usec / ( 1000 * 1000 );
+		tv.tv_usec = usec % ( 1000 * 1000 );
 		nfds = select(rfbScreen->maxFd + 1, &fds, NULL, NULL /* &fds */, &tv);
 		if (nfds == 0) {
 			/* timed out, check for async events */
